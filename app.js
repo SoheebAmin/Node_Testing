@@ -1,7 +1,13 @@
-const os = require('os');
+const EventEmitter = require('events');
 
-var totalMem = os.totalmem();
-var freeMem = os.freemem();
+const emitter = new EventEmitter();
 
-console.log("Total Memory " + totalMem);
-console.log("Free Memory: " + freeMem); 
+// register a listerner
+emitter.on('messageLogged', function(){
+    console.log('listener called');
+});
+
+
+// raised an event
+emitter.emit('messageLogged');
+
