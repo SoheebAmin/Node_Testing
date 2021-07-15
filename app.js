@@ -29,3 +29,23 @@ logger.on('messageLogged', (arg) => {
 });
 
 logger.log('message');
+
+// HTTP Module
+const http = require('http');
+
+// create a server
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.write('Here is your response');
+        res.end();
+    }
+});
+
+server.on('connection', (socket) => {
+    console.log('New Connection');
+});
+
+server.listen(3000);
+
+console.log('Listening on port 3000');
+
