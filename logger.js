@@ -4,7 +4,7 @@ function log(message) {
     console.log('printing: ' + message);
 }
 
-module.exports.log = log;
+module.exports = log;
 
 
 
