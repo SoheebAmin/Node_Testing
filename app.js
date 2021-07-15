@@ -1,8 +1,12 @@
+// Working with Path
+
 const path = require('path')
 
 var pathObj = path.parse(__filename);
 
 console.log(pathObj);
+
+// Working with OS
 
 const os = require('os');
 
@@ -12,16 +16,16 @@ var freeMem = os.freemem();
 console.log("Total Memory " + totalMem);
 console.log("Free Memory: " + freeMem); 
 
+// Emitting Events
+
 const EventEmitter = require('events');
 
-const emitter = new EventEmitter();
+const Logger = require('./logger');
+const logger = new Logger();
 
-// register a listerner
-emitter.on('messageLogged', function(){
-    console.log('listener called');
+// register a listener with an arrow function + args for it
+logger.on('messageLogged', (arg) => {
+    console.log('listener called', arg);
 });
 
-
-// raised an event
-emitter.emit('messageLogged');
-
+logger.log('message');
